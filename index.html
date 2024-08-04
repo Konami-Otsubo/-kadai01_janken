@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -14,25 +13,40 @@
     <header>
         <h1>じゃんけん</h1>
     </header>
-
     <main>
         <ul>
-            <li id="gu_btn">グー</li>
-            <li id="cho_btn">チョキ</li>
-            <li id="par_btn">パー</li>
+            <li id="gu_btn" class="hand gu">グー</li>
+            <li id="cho_btn" class="hand cho">チョキ</li>
+            <li id="par_btn" class="hand par">パー</li>
         </ul>
         <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
         <div id="judgment">勝ち</div>
     </main>
-
     <footer></footer>
     <script>
-   
-   
+        // グー、チョキ、パーのボタン要素を取得
+        const guBtn = document.getElementById('gu_btn');
+        const choBtn = document.getElementById('cho_btn');
+        const parBtn = document.getElementById('par_btn');
 
+        // コンピュータの手をランダムに決める関数
+        function getComputerHand() {
+            const hands = ['グー', 'チョキ', 'パー'];
+            const randomIndex = Math.floor(Math.random() * hands.length);
+            return hands[randomIndex];
+        }
 
-   
-    </script>
-</body>
-
-</html>
+        // 勝敗を判断する関数
+        function judge(playerHand, computerHand) {
+            if (playerHand === computerHand) {
+                return '引き分け';
+            } else if (
+                (playerHand === 'グー' && computerHand === 'チョキ') ||
+                (playerHand === 'チョキ' && computerHand === 'パー') ||
+                (playerHand === 'パー' && computerHand === 'グー')
+            ) {
+                return '勝ち';
+            } else {
+                return '負け';
+            }
+        }
