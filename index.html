@@ -50,3 +50,20 @@
                 return '負け';
             }
         }
+
+        // ボタンをクリックしたときのイベントリスナーを追加
+        guBtn.addEventListener('click', () => play('グー'));
+        choBtn.addEventListener('click', () => play('チョキ'));
+        parBtn.addEventListener('click', () => play('パー'));
+
+        // じゃんけんをプレイする関数
+        function play(playerHand) {
+            const computerHand = getComputerHand();
+            const result = judge(playerHand, computerHand);
+
+            document.getElementById('pc_hands').innerText = computerHand;
+            document.getElementById('judgment').innerText = result;
+        }
+    </script>
+</body>
+</html>
